@@ -1,7 +1,7 @@
-//@version=4
-study("Williams Fractals", shorttitle="Fractals", format=format.price, precision=0, overlay=true)
+//@version = 4
+study("EMA's + Fractals", shorttitle="EmaFrac", format=format.price, precision=0, overlay=true)
 // Define "n" as the number of periods and keep a minimum value of 2 for error handling.
-n = input(title="Periods", defval=2, minval=2, type=input.integer)
+n = input(title="Periods", defval=5, minval=2, type=input.integer)
 
 
 // UpFractal
@@ -45,3 +45,20 @@ downFractal = (downflagDownFrontier and flagDownFrontier)
 
 plotshape(downFractal, style=shape.triangledown, location=location.belowbar, offset=-n, color=color.maroon, transp=0, size = size.small)
 plotshape(upFractal, style=shape.triangleup,   location=location.abovebar, offset=-n, color=color.olive,  transp=0, size = size.small)
+
+//Exponential Moving Average
+m1 = input(25, minval=1)
+m2 = input(50, minval=1)
+m3 = input(200, minval=1)
+
+src = input(close, title="Source")
+
+media_1 = ema(src, m1)
+media_2 = ema(src, m2)
+media_3 = ema(src, m3)
+
+
+
+plot(media_1,"ema 25", color.green)
+plot(media_2,"ema 50", color.blue)
+plot(media_3, "ema 200",color.red)

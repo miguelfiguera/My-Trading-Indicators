@@ -1,0 +1,24 @@
+//@version=3
+
+// EMA 3x1
+// 3 EMA en 1 Indicador
+// 3 Medias Móviles Exponenciales en un Indicador
+// por Jesus Mercado
+
+// @JesusMercado
+
+//@version=3
+study(shorttitle="EMA 3x1", title="3 EMA en 1 Indicador", overlay=true)
+m1 = input(25, minval=1)
+m2 = input(50, minval=1)
+m3 = input(200, minval=1)
+
+src = input(close, title="Source")
+
+media_1 = ema(src, m1)
+media_2 = ema(src, m2)
+media_3 = ema(src, m3)
+
+plot(media_1,"ema 25", color.green)
+plot(media_2,"ema 50", color.blue)
+plot(media_3, "ema 200",color.red)
