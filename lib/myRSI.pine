@@ -1,4 +1,4 @@
-//RSI
+//myRSI
 //@version=4
 study(title= "RSI + Horizontal")
 len = input(14, minval=1, title="Length")
